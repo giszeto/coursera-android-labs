@@ -205,7 +205,7 @@ public class DownloaderTaskFragment extends Fragment {
                             // TODO: Set the notification View's text to
                             // reflect whether the download completed
                             // successfully
-                            mContentView.setTextViewText(R.layout.custom_notification,
+                            mContentView.setTextViewText(R.id.text,
                                 success ? successMsg : failMsg);
 
                             // TODO: Use the Notification.Builder class to
