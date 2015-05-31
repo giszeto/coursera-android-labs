@@ -299,7 +299,7 @@ public class BubbleActivity extends Activity {
                         aBubble.postInvalidate();
                     } else {
                         executor.shutdownNow();
-                        aBubble.stop(!isBubbleStillOnScreen);
+                        aBubble.stop(isBubbleStillOnScreen);
                     }
                 }
             }, 0, REFRESH_RATE, TimeUnit.MILLISECONDS);
