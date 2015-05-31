@@ -299,6 +299,7 @@ public class BubbleActivity extends Activity {
                         aBubble.postInvalidate();
                     } else {
                         executor.shutdownNow();
+                        aBubble.stop(!isBubbleStillOnScreen);
                     }
                 }
             }, 0, REFRESH_RATE, TimeUnit.MILLISECONDS);
@@ -308,7 +309,7 @@ public class BubbleActivity extends Activity {
         private synchronized boolean intersects(float x, float y) {
             // TODO - Return true if the BubbleView intersects position (x,y)
             return (Math.pow(x - (mXPos + mRadius), 2) +
-                Math.pow(y - (mYPos + mRadius), 2)) <= mRadiusSquared;
+                Math.pow(y - (mYPos + mRadius), 2)) <= (mRadius+20);
         }
 
         // Cancel the Bubble's movement
@@ -378,8 +379,8 @@ public class BubbleActivity extends Activity {
         private boolean isOutOfView() {
             // TODO - Return true if the BubbleView is off the screen after
             // the move operation
-            return (mXPos > mDisplayWidth) || (mXPos < 0) ||
-                (mYPos > mDisplayHeight) || (mYPos < 0);
+            return (mXPos-mRadius > mDisplayWidth) || (mXPos+mRadius < 0) ||
+                (mYPos-mRadius > mDisplayHeight) || (mYPos+mRadius < 0);
         }
     }
 
